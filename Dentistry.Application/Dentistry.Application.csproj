@@ -5,8 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Dentistry.Core\Dentistry.Core.csproj" />
     <ProjectReference Include="..\Dentistry.EntityFramework\Dentistry.EntityFramework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Dentist\Dto\" />
   </ItemGroup>
 
 </Project>

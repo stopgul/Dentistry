@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Dentistry.Application;
+using Dentistry.Application.Patient;
 using Dentistry.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,6 +34,10 @@ namespace Dentistry.Web.Api
                     );
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDentistryEntityFramework();
+            services.AddDentistryApplication();
+            //services.AddSingleton<IPatientService, PatientService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
