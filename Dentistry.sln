@@ -3,13 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dentistry.Core", "Dentistry.Core\Dentistry.Core.csproj", "{FC2C65D2-3903-4357-9CD6-04AA987BDF77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dentistry.Core", "src\Dentistry.Core\Dentistry.Core.csproj", "{FC2C65D2-3903-4357-9CD6-04AA987BDF77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dentistry.EntityFramework", "Dentistry.EntityFramework\Dentistry.EntityFramework.csproj", "{9D90F16C-F7F0-440B-B208-EDA1BB40FED0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dentistry.EntityFramework", "src\Dentistry.EntityFramework\Dentistry.EntityFramework.csproj", "{9D90F16C-F7F0-440B-B208-EDA1BB40FED0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dentistry.Application", "Dentistry.Application\Dentistry.Application.csproj", "{07DD2175-85AE-46E3-84E8-038972F34980}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dentistry.Application", "src\Dentistry.Application\Dentistry.Application.csproj", "{07DD2175-85AE-46E3-84E8-038972F34980}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dentistry.Web.Api", "Dentistry.Web.Api\Dentistry.Web.Api.csproj", "{565C789E-94B0-458A-9FDF-6185446A1199}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dentistry.Web.Api", "src\Dentistry.Web.Api\Dentistry.Web.Api.csproj", "{565C789E-94B0-458A-9FDF-6185446A1199}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{37CE9190-85C2-40EC-A37A-4F8C1FD2FD20}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6BF757A1-EA5C-4BF8-8BD0-0F319332332D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dentistry.Application.Test", "test\Dentistry.Application.Test\Dentistry.Application.Test.csproj", "{3CC539D4-25F4-488D-AAC8-6897AAAB54C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +39,20 @@ Global
 		{565C789E-94B0-458A-9FDF-6185446A1199}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{565C789E-94B0-458A-9FDF-6185446A1199}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{565C789E-94B0-458A-9FDF-6185446A1199}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CC539D4-25F4-488D-AAC8-6897AAAB54C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CC539D4-25F4-488D-AAC8-6897AAAB54C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CC539D4-25F4-488D-AAC8-6897AAAB54C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CC539D4-25F4-488D-AAC8-6897AAAB54C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FC2C65D2-3903-4357-9CD6-04AA987BDF77} = {37CE9190-85C2-40EC-A37A-4F8C1FD2FD20}
+		{9D90F16C-F7F0-440B-B208-EDA1BB40FED0} = {37CE9190-85C2-40EC-A37A-4F8C1FD2FD20}
+		{07DD2175-85AE-46E3-84E8-038972F34980} = {37CE9190-85C2-40EC-A37A-4F8C1FD2FD20}
+		{565C789E-94B0-458A-9FDF-6185446A1199} = {37CE9190-85C2-40EC-A37A-4F8C1FD2FD20}
+		{3CC539D4-25F4-488D-AAC8-6897AAAB54C8} = {6BF757A1-EA5C-4BF8-8BD0-0F319332332D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4AE53D23-BB13-41BE-B344-AD38AFB0BEC4}
