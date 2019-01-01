@@ -2,7 +2,7 @@
 using Dentistry.Core.Patient;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-
+using System.Threading.Tasks;
 
 namespace Dentistry.Web.Api.Controllers
 {
@@ -17,9 +17,9 @@ namespace Dentistry.Web.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public Patient Get(long id)
+        public async Task<Patient> Get(long id)
         {
-            return _patientService.GetAll(); 
+            return await _patientService.GetPatientByIdAsync(id); 
         }
 
         // POST api/<controller>

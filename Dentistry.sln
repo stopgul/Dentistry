@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6BF757A1-E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dentistry.Application.Test", "test\Dentistry.Application.Test\Dentistry.Application.Test.csproj", "{3CC539D4-25F4-488D-AAC8-6897AAAB54C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dentistry.Web.Api.Test", "test\Dentistry.Web.Api.Test\Dentistry.Web.Api.Test.csproj", "{DB1FE2B1-CA01-4289-B019-279D08455BAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{3CC539D4-25F4-488D-AAC8-6897AAAB54C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CC539D4-25F4-488D-AAC8-6897AAAB54C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CC539D4-25F4-488D-AAC8-6897AAAB54C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB1FE2B1-CA01-4289-B019-279D08455BAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB1FE2B1-CA01-4289-B019-279D08455BAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB1FE2B1-CA01-4289-B019-279D08455BAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB1FE2B1-CA01-4289-B019-279D08455BAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{07DD2175-85AE-46E3-84E8-038972F34980} = {37CE9190-85C2-40EC-A37A-4F8C1FD2FD20}
 		{565C789E-94B0-458A-9FDF-6185446A1199} = {37CE9190-85C2-40EC-A37A-4F8C1FD2FD20}
 		{3CC539D4-25F4-488D-AAC8-6897AAAB54C8} = {6BF757A1-EA5C-4BF8-8BD0-0F319332332D}
+		{DB1FE2B1-CA01-4289-B019-279D08455BAF} = {6BF757A1-EA5C-4BF8-8BD0-0F319332332D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4AE53D23-BB13-41BE-B344-AD38AFB0BEC4}
