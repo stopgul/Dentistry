@@ -1,34 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Dentistry.EntityFramework.Repositories
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        IQueryable<TEntity> GetAll(
-           bool condition = false,
-           Expression<Func<TEntity, bool>> predicate = null,
-           bool disableTracking = false);
-
-        Task<TEntity> GetFirstOrDefaultAsync(
-            Expression<Func<TEntity, bool>> predicate = null,
-            bool disableTracking = false);
-
-        Task InsertAsync(
-            IEnumerable<TEntity> entities,
-            CancellationToken cancellationToken = default(CancellationToken));
-
-        Task InsertAsync(TEntity entity, CancellationToken cancellationToken = default(CancellationToken));
-
-        void Delete(IEnumerable<TEntity> entities);
-
-        void Insert(TEntity entity);
-
-        TEntity GetFirstOrDefault(Expression<Func<TEntity, bool>> predicate = null, bool disableTracking = false);
+        Task<int> AddAsync(TEntity obj);
+        Task<IEnumerable<TEntity>> GetByConditionAsync(Expression<Func<TEntity, bool>> expression);
+        Task<TEntity> GetByIdAsync(long id);
+        Task<int> RemoveAsync(long id);
+        Task<int> UpdateAsync(TEntity obj);
     }
 }

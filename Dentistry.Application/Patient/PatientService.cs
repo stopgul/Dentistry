@@ -1,25 +1,17 @@
-﻿using AutoMapper;
-using Dentistry.Application.Patient.Dto;
-using Dentistry.EntityFramework.Repositories;
-using System;
-using System.Collections.Generic;
+﻿using Dentistry.EntityFramework.Repositories;
 using System.Threading.Tasks;
 
 namespace Dentistry.Application.Patient
 {
-    public  class PatientService : IPatientService
+    public class PatientService : IPatientService
     {
         private readonly IRepository<Core.Patient.Patient> _patientRepository;
-        private readonly IMapper _mapper;
+        //private readonly IMapper _mapper;
 
         public PatientService(IRepository<Core.Patient.Patient> patientRepository)
         {
-
+            _patientRepository = patientRepository;
         }
-        //public PatientService(IMapper mapper)
-        //{
-
-        //}
         //public PatientService(IRepository<Core.Patient.Patient> patientRepository, IMapper mapper)
         //public PatientService( IMapper mapper)
         //{
@@ -27,32 +19,19 @@ namespace Dentistry.Application.Patient
         //    _mapper = mapper;
         //}
 
-        public void GetAll()
+        public async Task<Core.Patient.Patient> GetPatientByIdAsync(long id)
         {
-
+            return await _patientRepository.GetByIdAsync(id);
         }
-        //public IEnumerable<UserListDto> GetAll()
-        //{
-        //    var patients = _patientRepository.GetAll();
-        //    return null;
-        //}
 
-        //public CustomerViewModel GetById(Guid id)
-        //{
-        //    return _mapper.Map<CustomerViewModel>(_customerRepository.GetById(id));
-        //}
+        public async Task<int> CreatePatientAsync(Core.Patient.Patient patient)
+        {
+            return await _patientRepository.AddAsync(patient);
+        }
 
-        //public async Task<IPagedList<UserListDto>> GetDentistAsync(PatientListInput input)
-        //{
-        //    var query = _patientRepository.GetAll(
-        //            !input.Filter.IsNullOrEmpty(),
-        //            predicate => predicate.Name.Contains(input.Filter) || predicate.Email.Contains(input.Filter));
-
-        //    var usersCount = await query.CountAsync();
-        //    var users = query.PagedBy(input.PageIndex, input.PageSize).ToList();
-        //    //var userListDtos = _mapper.Map<List<UserListDto>>(users);
-
-        //    return null;// userListDtos.ToPagedList(usersCount);
-        //}
+        public async Task<int> UpdatePatientAsync(Core.Patient.Patient patient)
+        {
+            return await _patientRepository.UpdateAsync(patient);
+        }
     }
 }

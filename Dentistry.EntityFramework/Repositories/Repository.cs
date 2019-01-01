@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 
 namespace Dentistry.EntityFramework.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity>
-       where TEntity : class
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         protected readonly DentistryDbContext DbContext;
         protected readonly DbSet<TEntity> DbSet;
@@ -21,80 +20,113 @@ namespace Dentistry.EntityFramework.Repositories
             DbSet = DbContext.Set<TEntity>();
         }
 
-        public IQueryable<TEntity> GetAll(
-            bool condition = false,
-            Expression<Func<TEntity, bool>> predicate = null,
-            bool disableTracking = false)
+        public virtual async Task<TEntity> GetByIdAsync(long id)
         {
-            IQueryable<TEntity> query = DbSet;
-            if (disableTracking)
-            {
-                query = query.AsNoTracking();
-            }
-
-            if (condition && predicate != null)
-            {
-                query = query.Where(predicate);
-            }
-
-            return query;
+            return await DbSet.FindAsync(id);
         }
 
-        public async Task<TEntity> GetFirstOrDefaultAsync(
-            Expression<Func<TEntity, bool>> predicate = null,
-            bool disableTracking = false)
+        public virtual async Task<IEnumerable<TEntity>> GetByConditionAsync(Expression<Func<TEntity, bool>> expression)
         {
-            IQueryable<TEntity> query = DbSet;
-            if (disableTracking)
+            return await DbSet.Where(expression).ToListAsync();
+        }
+
+        public virtual async Task<int> AddAsync(TEntity obj)
+        {
+            if (obj == null)
             {
-                query = query.AsNoTracking();
+                throw new ArgumentNullException("entity");
             }
-
-            if (predicate != null)
-            {
-                query = query.Where(predicate);
-            }
-
-            return await query.FirstOrDefaultAsync();
+            DbSet.Add(obj);
+            return await DbContext.SaveChangesAsync();
         }
 
-        public Task InsertAsync(
-            IEnumerable<TEntity> entities,
-            CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<int> UpdateAsync(TEntity obj)
         {
-            return DbSet.AddRangeAsync(entities, cancellationToken);
+            DbSet.Update(obj);
+            return await DbContext.SaveChangesAsync();
         }
 
-        public Task InsertAsync(
-            TEntity entity,
-            CancellationToken cancellationToken = default(CancellationToken))
+        public virtual async Task<int> RemoveAsync(long id)
         {
-            return DbSet.AddAsync(entity, cancellationToken);
+            DbSet.Remove(DbSet.Find(id));
+            return await DbContext.SaveChangesAsync();
         }
 
-        public void Delete(IEnumerable<TEntity> entities) => DbSet.RemoveRange(entities);
 
-        public void Insert(TEntity entity)
-        {
-            DbSet.Add(entity);
-        }
+        //public IQueryable<TEntity> GetAll(
+        //    bool condition = false,
+        //    Expression<Func<TEntity, bool>> predicate = null,
+        //    bool disableTracking = false)
+        //{
+        //    IQueryable<TEntity> query = DbSet;
+        //    if (disableTracking)
+        //    {
+        //        query = query.AsNoTracking();
+        //    }
 
-        public TEntity GetFirstOrDefault(
-            Expression<Func<TEntity, bool>> predicate = null,
-            bool disableTracking = false)
-        {
-            IQueryable<TEntity> query = DbSet;
-            if (disableTracking)
-            {
-                query = query.AsNoTracking();
-            }
+        //    if (condition && predicate != null)
+        //    {
+        //        query = query.Where(predicate);
+        //    }
 
-            if (predicate != null)
-            {
-                query = query.Where(predicate);
-            }
+        //    return query;
+        //}
 
-            return query.FirstOrDefault();
-        }
+        //public async Task<TEntity> GetFirstOrDefaultAsync(
+        //    Expression<Func<TEntity, bool>> predicate = null,
+        //    bool disableTracking = false)
+        //{
+        //    IQueryable<TEntity> query = DbSet;
+        //    if (disableTracking)
+        //    {
+        //        query = query.AsNoTracking();
+        //    }
+
+        //    if (predicate != null)
+        //    {
+        //        query = query.Where(predicate);
+        //    }
+
+        //    return await query.FirstOrDefaultAsync();
+        //}
+
+        //public Task InsertAsync(
+        //    IEnumerable<TEntity> entities,
+        //    CancellationToken cancellationToken = default(CancellationToken))
+        //{
+        //    return DbSet.AddRangeAsync(entities, cancellationToken);
+        //}
+
+        //public Task InsertAsync(
+        //    TEntity entity,
+        //    CancellationToken cancellationToken = default(CancellationToken))
+        //{
+        //    return DbSet.AddAsync(entity, cancellationToken);
+        //}
+
+        //public void Delete(IEnumerable<TEntity> entities) => DbSet.RemoveRange(entities);
+
+        //public void Insert(TEntity entity)
+        //{
+        //    DbSet.Add(entity);
+        //}
+
+        //public TEntity GetFirstOrDefault(
+        //    Expression<Func<TEntity, bool>> predicate = null,
+        //    bool disableTracking = false)
+        //{
+        //    IQueryable<TEntity> query = DbSet;
+        //    if (disableTracking)
+        //    {
+        //        query = query.AsNoTracking();
+        //    }
+
+        //    if (predicate != null)
+        //    {
+        //        query = query.Where(predicate);
+        //    }
+
+        //    return query.FirstOrDefault();
+        //}
     }
 }
