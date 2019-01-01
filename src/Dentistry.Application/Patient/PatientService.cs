@@ -1,4 +1,6 @@
 ﻿using Dentistry.EntityFramework.Repositories;
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Dentistry.Application.Patient
@@ -22,6 +24,16 @@ namespace Dentistry.Application.Patient
         public async Task<Core.Patient.Patient> GetPatientByIdAsync(long id)
         {
             return await _patientRepository.GetByIdAsync(id);
+        }
+
+        public async Task<IEnumerable<Core.Patient.Patient>> GetPatientsByNameAsync(string name)
+        {
+            return await _patientRepository.GetByConditionAsync(t=>t.Name==name);
+        }
+
+        public async Task<IEnumerable<Core.Patient.Patient>> GetPatients()
+        {            
+            return await _patientRepository.GetAllAsync();
         }
 
         public async Task<int> CreatePatientAsync(Core.Patient.Patient patient)

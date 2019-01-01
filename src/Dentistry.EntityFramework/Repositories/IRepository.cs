@@ -10,6 +10,7 @@ namespace Dentistry.EntityFramework.Repositories
         Task<int> AddAsync(TEntity obj);
         Task<IEnumerable<TEntity>> GetByConditionAsync(Expression<Func<TEntity, bool>> expression);
         Task<TEntity> GetByIdAsync(long id);
+        Task<IEnumerable<TEntity>> GetAllAsync();
         Task<int> RemoveAsync(long id);
         Task<int> UpdateAsync(TEntity obj);
     }

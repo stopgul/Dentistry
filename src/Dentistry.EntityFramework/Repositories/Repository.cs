@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Dentistry.EntityFramework.Repositories
@@ -23,6 +21,11 @@ namespace Dentistry.EntityFramework.Repositories
         public virtual async Task<TEntity> GetByIdAsync(long id)
         {
             return await DbSet.FindAsync(id);
+        }
+
+        public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
+        {
+            return await DbSet.ToListAsync();
         }
 
         public virtual async Task<IEnumerable<TEntity>> GetByConditionAsync(Expression<Func<TEntity, bool>> expression)

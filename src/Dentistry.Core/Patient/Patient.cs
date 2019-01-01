@@ -1,5 +1,8 @@
-﻿namespace Dentistry.Core.Patient
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Dentistry.Core.Patient
 {
+    [Table("Patient")]
     public class Patient : BaseEntity<long>
     {
         public string Name { get; set; }
